@@ -13,12 +13,18 @@ Color darkHeaderClr = Color(0xFF424242);
 
 class Themes {
   static final light = ThemeData(
+    primarySwatch: Colors.indigo,
       brightness:Brightness.light,
-      colorScheme: ColorScheme.light().copyWith(primary:  primaryClr),
+      // colorScheme:  ColorScheme
+      //     .fromSwatch(primarySwatch: Colors.blue)
+      //     .copyWith(primary:  primaryClr),
   );
 
   static final dark =  ThemeData(
-      colorScheme: ColorScheme.light().copyWith(primary:  darkGrayClr),
+      primarySwatch: Colors.blueGrey,
+      // colorScheme:  ColorScheme
+      //     .fromSwatch(primarySwatch: Colors.blue)
+      //     .copyWith(primary:  darkGrayClr),
       brightness:Brightness.dark
   );
 
