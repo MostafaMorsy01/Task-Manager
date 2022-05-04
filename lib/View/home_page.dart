@@ -1,39 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:taskmanager/Controller/controller.dart';
+import 'package:taskmanager/Helper/extensions.dart';
 import 'package:taskmanager/Services/Themes_Service.dart';
+import 'package:taskmanager/Widgets/add_card.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
-      body: Column(
-        children: [
-          Text("Theme Data", style: TextStyle(fontSize: 30),),
-        ],
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Padding(
+              padding:EdgeInsets.all(4.0.wp),
+              child: Text('My List', style: TextStyle(
+                fontSize: 24.0.sp,
+                fontWeight: FontWeight.bold,
+              ),),
+            ),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              children: [
+                AddCard(),
+              ],
+            ),
+          ],
+        ),
       ),
-    );
-  }
-
-  _appBar() {
-    return AppBar(
-      leading: GestureDetector(
-        onTap: (){
-         ThemeServices().switchTheme();
-        },
-        child: Icon(Icons.nightlight_round, size: 20,),
-      ),
-      actions: const [
-        Icon(Icons.person, size: 20,),
-        SizedBox(width: 20,)
-      ],
     );
   }
 }
